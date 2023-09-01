@@ -14,8 +14,6 @@ from resources.tag import blp as TagBlueprint
 from resources.user import blp as UserBlueprint
 
 
-
-
 def create_app(db_url=None):
     app = Flask(__name__)
 
