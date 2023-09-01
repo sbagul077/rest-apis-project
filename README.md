@@ -9,4 +9,4 @@ Using SQLAlchemy and Flask-SQLAlchemy to easily and efficiently store resources 
 
 Understand the complex intricacies of deployments of Flask REST APIs.
 
-Use Docker to simplify running and deploying your REST APIs.
+Use Docker to simplify running and deploying REST APIs.
