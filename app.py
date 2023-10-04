@@ -1,3 +1,4 @@
+import os
 import secrets
 
 from flask import Flask, jsonify
@@ -34,7 +35,7 @@ def create_app(db_url=None):
     app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
     # Code to load swagger UI  http://localhost:5005/swagger-ui
     app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or "sqlite:///data.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("DATABASE_URL", "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     # this initializes the flask SQL-Alchemy extension, giving it our flask app so that it can connect flask app to SQL-Alchemy
     db.init_app(app)
@@ -43,7 +44,7 @@ def create_app(db_url=None):
     # This function will before our first request is processed in the app
     # So whenever the app starts and a request is made using postman or insomnia before that first request is tackled
     # Then it will run app.app_context():. This will create all the table in our database if they don't already exist.
-    app.config["JWT_SECRET_KEY"] = "240989547675631025960092279006023749491"
+    app.config["JWT_SECRET_KEY"] = "sanket"
     jwt = JWTManager(app)
 
     @jwt.token_in_blocklist_loader
